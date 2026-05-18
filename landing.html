@@ -244,6 +244,167 @@
     text-transform: uppercase;
   }
 
+  .phone-demo {
+    background:
+      radial-gradient(circle at 74% 20%, rgba(255, 122, 0, 0.18), transparent 34%),
+      linear-gradient(180deg, #0a0a0a 0%, #101010 100%);
+  }
+
+  .phone-demo-grid {
+    align-items: center;
+    display: grid;
+    gap: clamp(28px, 5vw, 64px);
+    grid-template-columns: minmax(0, 0.86fr) minmax(250px, 360px);
+  }
+
+  .phone-demo-copy p {
+    color: rgba(245, 242, 238, 0.78);
+    font-size: 18px;
+    line-height: 1.55;
+    margin-top: 18px;
+    max-width: 620px;
+  }
+
+  .phone-shell {
+    background: linear-gradient(145deg, #2b2b2b, #050505 42%, #222);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 44px;
+    box-shadow: 0 42px 90px rgba(0, 0, 0, 0.6);
+    justify-self: center;
+    padding: 12px;
+    position: relative;
+    width: min(100%, 310px);
+  }
+
+  .phone-shell::before {
+    background: #050505;
+    border-radius: 0 0 16px 16px;
+    content: '';
+    height: 20px;
+    left: 50%;
+    position: absolute;
+    top: 12px;
+    transform: translateX(-50%);
+    width: 86px;
+    z-index: 3;
+  }
+
+  .phone-screen {
+    aspect-ratio: 9 / 19.5;
+    background: #050505;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 32px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .phone-screen > img {
+    display: block;
+    height: 100%;
+    object-fit: contain;
+    object-position: top center;
+    width: 100%;
+  }
+
+  .prompt-popover {
+    animation: prompt-focus 7s ease-in-out infinite;
+    background: rgba(16, 16, 16, 0.94);
+    border: 1px solid rgba(255, 122, 0, 0.42);
+    border-radius: 14px;
+    bottom: 70px;
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.58);
+    left: 14px;
+    padding: 12px;
+    position: absolute;
+    right: 14px;
+    z-index: 4;
+  }
+
+  .prompt-popover strong {
+    color: var(--orange);
+    display: block;
+    font-size: 10px;
+    letter-spacing: 1.4px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+  }
+
+  .prompt-popover p {
+    color: var(--text);
+    font-size: 11px;
+    line-height: 1.38;
+  }
+
+  .copy-demo-button {
+    animation: copy-button-pulse 7s ease-in-out infinite;
+    align-items: center;
+    background: var(--orange);
+    border: 0;
+    border-radius: 8px;
+    color: var(--black);
+    display: flex;
+    font-size: 11px;
+    font-weight: 900;
+    justify-content: center;
+    margin-top: 10px;
+    min-height: 34px;
+    text-transform: uppercase;
+    width: 100%;
+  }
+
+  .touch-dot {
+    animation: tap-copy 7s ease-in-out infinite;
+    background: var(--white);
+    border-radius: 50%;
+    bottom: 84px;
+    box-shadow: 0 0 0 12px rgba(255, 122, 0, 0.22);
+    height: 13px;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 13px;
+    z-index: 5;
+  }
+
+  .copy-toast {
+    animation: copied-toast 7s ease-in-out infinite;
+    background: var(--green);
+    border-radius: 999px;
+    bottom: 22px;
+    color: var(--black);
+    font-size: 11px;
+    font-weight: 900;
+    left: 50%;
+    padding: 8px 14px;
+    position: absolute;
+    text-transform: uppercase;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    z-index: 6;
+  }
+
+  @keyframes prompt-focus {
+    0%, 12% { opacity: 0; transform: translateY(18px) scale(0.96); }
+    20%, 88% { opacity: 1; transform: translateY(0) scale(1); }
+    100% { opacity: 0; transform: translateY(18px) scale(0.96); }
+  }
+
+  @keyframes copy-button-pulse {
+    0%, 38%, 100% { background: var(--orange); }
+    45%, 56% { background: var(--white); }
+  }
+
+  @keyframes tap-copy {
+    0%, 36%, 63%, 100% { opacity: 0; transform: translateX(-50%) scale(0.7); }
+    42%, 48% { opacity: 1; transform: translateX(-50%) scale(1); }
+    52% { opacity: 0.85; transform: translateX(-50%) scale(1.8); }
+  }
+
+  @keyframes copied-toast {
+    0%, 53%, 100% { opacity: 0; transform: translateX(-50%) translateY(12px); }
+    60%, 86% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  }
+
   .combo {
     background:
       radial-gradient(circle at 78% 16%, rgba(168, 216, 41, 0.22), transparent 32%),
@@ -313,11 +474,12 @@
 
   @media (max-width: 920px) {
     .nav-actions a:not(.buy-link) { display: none; }
-    .hero, .combo-grid, .checkout-band { grid-template-columns: 1fr; }
+    .hero, .phone-demo-grid, .combo-grid, .checkout-band { grid-template-columns: 1fr; }
     .cover-wrap { justify-content: flex-start; }
     .book { max-height: none; transform: rotateY(-10deg) rotateX(2deg); width: min(360px, 100%); }
     .cards, .workflow { grid-template-columns: 1fr; }
     .mini-proof { grid-template-columns: 1fr; }
+    .phone-shell { width: min(310px, 82vw); }
   }
 
   @media (max-width: 520px) {
@@ -408,6 +570,32 @@
       <div class="step"><strong>2. Contextualize</strong>Adapte o comando com sua área, objeto, pergunta de pesquisa e tipo de entrega.</div>
       <div class="step"><strong>3. Refine</strong>Use a resposta da IA como rascunho, mapa ou checklist, não como substituto da autoria.</div>
       <div class="step"><strong>4. Produza</strong>Transforme o resultado em decisão, parágrafo, matriz, roteiro, plano ou revisão crítica.</div>
+    </div>
+  </section>
+
+  <section class="section phone-demo" aria-label="Demonstração de cópia de prompt no celular">
+    <div class="phone-demo-grid">
+      <div class="phone-demo-copy">
+        <div class="kicker">Uso no celular</div>
+        <h2>Abra o ebook digital, toque em copiar e leve o prompt para sua IA</h2>
+        <p>A experiência foi pensada para consulta rápida: encontre o prompt, copie com um toque e use no ChatGPT, Claude, Gemini ou na ferramenta que preferir.</p>
+        <div class="cta-row">
+          <a class="btn btn-primary" href="https://buy.stripe.com/aFa14gd5G5qA6O04Ob28801">Comprar 200 Secretos</a>
+          <a class="btn btn-secondary" href="#combo">Ver combo 400 prompts</a>
+        </div>
+      </div>
+      <div class="phone-shell" aria-label="iPhone simulando cópia de prompt no ebook digital">
+        <div class="phone-screen">
+          <img src="./secretos-iphone-screen.png" alt="Tela mobile real do ebook Meus 200 Prompts Secretos">
+          <div class="prompt-popover">
+            <strong>Prompt secreto</strong>
+            <p>Atue como orientador metodológico e transforme meu tema em problema, objetivo geral, objetivos específicos e próximos passos de pesquisa.</p>
+            <span class="copy-demo-button">Copiar prompt</span>
+          </div>
+          <span class="touch-dot" aria-hidden="true"></span>
+          <span class="copy-toast" aria-hidden="true">Prompt copiado</span>
+        </div>
+      </div>
     </div>
   </section>
 
