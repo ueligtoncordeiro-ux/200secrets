@@ -472,8 +472,21 @@
 
   .footer { background: var(--black); border-top: 1px solid rgba(255,255,255,0.08); color: var(--muted); font-size: 13px; padding: 24px clamp(20px, 5vw, 72px); }
 
+  .login-link {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.15);
+    border-radius: 6px;
+    padding: 6px 14px !important;
+    color: var(--text) !important;
+    font-size: 12px !important;
+  }
+  .login-link:hover { border-color: var(--orange) !important; color: var(--orange) !important; }
+  .already-member { margin-top: 1rem; font-size: 13px; color: var(--muted); }
+  .already-member a { color: var(--orange); text-decoration: none; font-weight: 700; }
+  .already-member a:hover { text-decoration: underline; }
+
   @media (max-width: 920px) {
-    .nav-actions a:not(.buy-link) { display: none; }
+    .nav-actions a:not(.buy-link):not(.login-link) { display: none; }
     .hero, .phone-demo-grid, .combo-grid, .checkout-band { grid-template-columns: 1fr; }
     .cover-wrap { justify-content: flex-start; }
     .book { max-height: none; transform: rotateY(-10deg) rotateX(2deg); width: min(360px, 100%); }
@@ -502,6 +515,7 @@
       <a href="#metodo">Método</a>
       <a href="#combo">Combo</a>
       <a class="buy-link" href="https://buy.stripe.com/aFa14gd5G5qA6O04Ob28801">Comprar</a>
+      <a class="login-link" href="https://ebook-vault.ueligtoncordeiro.workers.dev/login">Já sou aluno</a>
     </div>
   </nav>
 
@@ -527,6 +541,9 @@
         <span>Checkout seguro</span>
         <span>Acesso digital</span>
         <span>Prompts aplicáveis</span>
+      </div>
+      <div class="already-member">
+        Já adquiriu? <a href="https://ebook-vault.ueligtoncordeiro.workers.dev/login">Acesse sua área de membros →</a>
       </div>
     </div>
     <div class="cover-wrap" aria-label="Capa do ebook Meus 200 Prompts Secretos">
